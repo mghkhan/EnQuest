@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+    <h:head> 
+        <title>Welcome to Inquest. A Product by Nexus Leads Consultants</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+
+    </h:head>
+    
+    <h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Planning" icon="icon-down-open">
+        <p:menuitem value="Audit Universe" url="aduituniverse.xhtml"  />
+            <p:menuitem value="Audit Program" url="#" />
+         <p:menuitem value="Audit Staff" url="#"  />
+          <p:menuitem value="Auditee Management" url="#"  />
+          <p:menuitem value="Auditee Plan" url="#"  />
+        <p:menuitem value="Risk Assessment" url="#"  />
+         <p:menuitem value="Time Budget" url="#"  />
+        </p:submenu>
+ 
+        <p:submenu label="Execution" icon="ui-icon-note">
+         <p:menuitem value="Project" url="#"  />
+        <p:menuitem value="Working Papers" url="#"  />
+        <p:menuitem value="Test Plan" url="#"  />
+        <p:menuitem value="Draft Audit Report" url="#"  />
+        <p:menuitem value="Exception Recording" url="#" />
+
+            <p:submenu label="Manage Users" icon="ui-icon-person">
+              <p:menuitem value="Add User" url="adduser.xhtml" icon="ui-icon-contact"/>
+                <p:menuitem value="Edit/Delete Users" url="index.xhtml"/>     
+            </p:submenu>
+
+        </p:submenu>
+
+ 
+        <p:menuitem value="Logout " action="#{menuCont.logout}" icon="ui-icon-extlink" />
+ 
+        
+    </p:menubar>
+</h:form>
+  </html>

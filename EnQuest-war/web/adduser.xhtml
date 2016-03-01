@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+    </h:head>
+    
+
+<f:view>
+           
+            <h:form  title="Create new user">
+<p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Planning" icon="icon-down-open">
+            <p:submenu label="New" icon="ui-icon-contact">
+                <p:menuitem value="Project" url="#" />
+                <p:menuitem value="Other" url="#" />
+            </p:submenu>
+            <p:menuitem value="Open" url="#" />
+            <p:separator />
+            <p:menuitem value="Quit" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Execution" icon="ui-icon-note">
+            <p:menuitem value="Manage Users" url="#" icon="ui-icon-person" />
+                <p:menuitem value="Add User" url="adduser.xhtml"/>
+                <p:menuitem value="Show Users" url="index.xhtml"/>
+                
+            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+        </p:submenu>
+ 
+        <p:submenu label="Help" icon="ui-icon-help">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="ui-icon-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="ui-icon-gear">
+            <p:submenu label="Ajax" icon="ui-icon-refresh">
+                <p:menuitem value="Save"  icon="ui-icon-disk" update="messages"/>
+                <p:menuitem value="Update"  icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                <p:menuitem value="Delete"  icon="ui-icon-close" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Logout " action="#{menuCont.logout}" icon="ui-icon-extlink" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin-right:5px" value="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>                
+           <h:panelGrid columns="2" cellpadding="1">
+                <f:facet name="header">
+        Create new User
+    </f:facet>
+              
+                    <h:outputLabel value="Login ID" for="login" />
+                    <h:inputText id="login" value="#{userController.usrDet.login}" tabindex="1" class="input" title="Login" required="true" requiredMessage="The Login field is required."/>
+               <h:outputLabel value="Name" for="userName" />
+               
+                    <h:inputText id="userName" value="#{userController.usrDet.userName}" tabindex="2" class="input" title="Enter full name" required="true" requiredMessage="The UserName field is required."/>
+                    <h:outputLabel  value="Password " for="password" />
+                    <h:inputSecret id="password" value="#{userController.usrDet.password}" tabindex="3" class="input" title="Enter Password" required="true" requiredMessage="The Password field is required."/>
+                    
+                    <h:outputLabel value="User roles" for="userRoles" />
+                    <h:inputText id="userRoles" value="#{userController.usrDet.userRoles}" tabindex="4" class="input" title="UserRoles" required="true" requiredMessage="The UserRoles field is required."/>
+               
+                   
+                  <h:outputLabel value="" for="login" />
+                    <h:commandButton styleClass="loginbutton"  value ="Save" action="#{userController.add()}"></h:commandButton>
+                </h:panelGrid>
+                    
+            </h:form>
+        </f:view>
+</html>

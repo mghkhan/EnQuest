@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+    </h:head>
+        
+           <p:menubar>
+        <p:submenu label="Planning" icon="icon-down-open">
+            <p:submenu label="New" icon="ui-icon-contact">
+                <p:menuitem value="Project" url="#" />
+                <p:menuitem value="Other" url="#" />
+            </p:submenu>
+            <p:menuitem value="Open" url="#" />
+            <p:separator />
+            <p:menuitem value="Quit" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Execution" icon="ui-icon-note">
+            <p:menuitem value="Manage Users" url="#" icon="ui-icon-person" />
+                <p:menuitem value="Add User" url="adduser.xhtml"/>
+                <p:menuitem value="Show Users" url="index.xhtml"/>
+                
+            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+        </p:submenu>
+ 
+        <p:submenu label="Help" icon="ui-icon-help">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="ui-icon-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="ui-icon-gear">
+            <p:submenu label="Ajax" icon="ui-icon-refresh">
+                <p:menuitem value="Save"  icon="ui-icon-disk" update="messages"/>
+                <p:menuitem value="Update"  icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                <p:menuitem value="Delete"  icon="ui-icon-close" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Logout " action="#{menuCont.logout}" icon="ui-icon-extlink" />
+   
+    <h:form id="viewform">
+        <p:contextMenu for="users">
+        <p:menuitem value="Delete" update="users" icon="ui-icon-close" actionListener="#{userController.delete(u)}"/>
+    </p:contextMenu>
+        <p:dataTable id="users" var ="u" 
+                     editable="true" 
+                    paginator="true"  rows="10" value="#{userController.findAll()}">
+            <f:facet name="header">
+           Users
+       </f:facet>
+ 
+            <p:ajax event="rowEdit" listener="#{userController.edit(userdetails)}"  />
+           
+            <p:column headerText="Login ID">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{u.login}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{u.login}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+            </p:column>   
+           <p:column headerText="User's Full Name">
+           <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{u.userName}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{u.userName}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+               </p:column>
+               <p:column headerText="User roles">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{u.userRoles}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{u.userRoles}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+                   </p:column>
+            <p:column headerText="Options">
+                
+                <p:commandButton value="Delete" action="#{userController.delete(u)}"
+                                 ></p:commandButton>
+            </p:column>
+            <p:column style="width:32px">
+           <p:rowEditor />
+       </p:column>
+        </p:dataTable>
+ 
+        </h:form>
+        <f:view>
+          
+        </f:view>
+
+  
+</html>
+

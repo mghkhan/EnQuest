@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    >
+    <h:head>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+    </h:head>
+    
+
+<f:view>
+           
+            <h:form  title="Audit Universe">
+<p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Planning" icon="icon-down-open">
+        <p:menuitem value="Audit Universe" url="#"  />
+            <p:menuitem value="Audit Program" url="#" />
+         <p:menuitem value="Audit Staff" url="#"  />
+          <p:menuitem value="Auditee Management" url="#"  />
+          <p:menuitem value="Auditee Plan" url="#"  />
+        <p:menuitem value="Risk Assessment" url="#"  />
+         <p:menuitem value="Time Budget" url="#"  />
+        </p:submenu>
+ 
+        <p:submenu label="Execution" icon="ui-icon-note">
+         <p:menuitem value="Project" url="#"  />
+        <p:menuitem value="Working Papers" url="#"  />
+        <p:menuitem value="Test Plan" url="#"  />
+        <p:menuitem value="Draft Audit Report" url="#"  />
+        <p:menuitem value="Exception Recording" url="#" />
+
+            <p:submenu label="Manage Users" icon="ui-icon-person">
+              <p:menuitem value="Add User" url="adduser.xhtml" icon="ui-icon-contact"/>
+                <p:menuitem value="Edit/Delete Users" url="index.xhtml"/>     
+            </p:submenu>
+
+        </p:submenu>
+
+ 
+        <p:menuitem value="Logout " action="#{menuCont.logout}" icon="ui-icon-extlink" />
+ 
+        
+    </p:menubar>                
+                           </h:form>
+
+<h:form>
+    <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+         <f:facet name="header">
+        Audit Universe
+    </f:facet>
+        
+               <h:outputLabel value="Process Code"  style="font-size:14px;font-weight: bold;" />
+               <h:inputText id="processCode" value="#{auditUniverseController.adtUni.processCode}" tabindex="1" class="input" title="Process Code" required="true" requiredMessage="The Process code is required."/>
+               
+               <h:outputLabel  value="Process name " style="font-size:14px;font-weight: bold;"/>
+
+               <h:inputText id="processName" value="#{auditUniverseController.adtUni.processName}"
+           tabindex="2" class="input" title="Proces Name" required="true" requiredMessage="The Process name field is required."/>
+                    
+                    <h:outputLabel value="Sub Process Code" style="font-size:14px;font-weight: bold;" />
+                    <h:inputText id="subProcessCode" value="#{auditUniverseController.adtUni.subProcessCode}"
+                tabindex="4" class="input" title="Sub Process Code" required="true" 
+                requiredMessage="The Sub Process Code field is required."/>
+               
+                   <h:outputLabel value="Sub Process Name" style="font-size:14px;font-weight: bold;" />
+                   <h:inputText id="subProcessName" value="#{auditUniverseController.adtUni.subProcessName}"
+                tabindex="4" class="input" title="Sub Process Name" required="true" 
+                requiredMessage="The Sub Process Name field is required."/>
+                    
+                    <h:outputLabel value="Last rating" style="font-size:14px;font-weight: bold;" />
+                    <h:inputText id="lastRating" value="#{auditUniverseController.adtUni.lastRating}"
+                tabindex="4" class="input" title="Last rating" required="true" 
+                requiredMessage="The Last rating field is required."/>
+              
+
+                   <h:outputLabel value="Date Last Rated" style="font-size:14px;font-weight: bold;" />
+ 
+    <p:calendar id="datelastrated" value="#{auditUniverseController.adtUni.dateLastRated}" showOn="button" />
+
+               
+                    <h:outputLabel value="Current Rating" style="font-size:14px;font-weight: bold;" />
+                    <h:inputText id="currentrating" value="#{auditUniverseController.adtUni.currentRating}"
+                tabindex="4" class="input" title="Current Rating" required="true" 
+                requiredMessage="The Current Rating field is required."/>
+                    
+         <h:outputLabel value="Date of rating" style="font-size:14px;font-weight: bold;" />
+ 
+         <p:calendar id="dateofrating" value="#{auditUniverseController.adtUni.dateofRating}"
+                     showOn="button" />
+    
+                    <h:outputLabel value="Comments" style="font-size:14px;font-weight: bold;" />
+                 <p:inputTextarea rows="5" cols="30" autoResize="false" />
+
+               
+               
+               
+                  <h:outputLabel  style="font-size:14px;font-weight: bold;" />
+                  <h:commandButton styleClass="loginbutton"  value ="Save" action="#{auditUniverseController.add()}"></h:commandButton>
+</h:panelGrid>
+          
+</h:form>      
+               
+        </f:view>
+
+</html>

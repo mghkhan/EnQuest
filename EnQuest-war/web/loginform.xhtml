@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head> 
+        <title>Welcome to Inquest. A Product by Nexus Leads Consultants</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+<h:graphicImage id="img" value="/images/logintab.png" height="80" width="1400">
+<p:resizable/>
+</h:graphicImage>
+
+</h:head>
+<h:body>
+
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+<h:form id="loginform">
+        <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="loginform">
+                </h:outputLink>
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+<h:panelGrid columns="2" cellpadding="5">
+    <h:inputText id="username"  value="#{userController.usrDet.login}"  disabled="false" tabindex="1" class="input" required="true"
+                                                 />
+  <p:watermark for="username" value="Enter User Name" />
+
+  
+  <h:inputSecret id="password"  value="#{userController.usrDet.password}"  disabled="false" tabindex="2" class="input" required="true" />                                                
+  <p:watermark for="password" value="Enter Password"  />
+              <f:facet name="footer">
+<!--This is a comment. Comments are not displayed in the browser-->
+ <!--  actionListener=""-->
+   
+  
+    <h:commandButton id="login" 
+
+                         value="Login" 
+
+                         action="#{userController.login}"/>
+                    
+               </f:facet>  
+  
+
+          </h:panelGrid>
+
+</h:form>
+    
+
+</h:body>
+</html>
